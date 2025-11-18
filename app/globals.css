@@ -1,26 +1,101 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* -------------------------------
+   CUSTOM VARIABLES (THEME COLORS)
+---------------------------------*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-dark: #02071b;
+  --bg-alt: #050f2c;
+  --accent-blue: #1d4ed8;
+  --accent-green: #10b981;
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* -------------------------------
+   GLOBAL BASE STYLES
+---------------------------------*/
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* -------------------------------
+   HERO PHONE ANIMATIONS
+---------------------------------*/
+
+/* Floating (up–down soft movement) */
+@keyframes floatPhone {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.float-phone {
+  animation: floatPhone 5s ease-in-out infinite;
+}
+
+/* Glow pulse behind the phone */
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.hero-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.22),
+    transparent 70%
+  );
+  filter: blur(60px);
+  animation: glowPulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Tilt on hover */
+.tilt-phone:hover {
+  transform: translateY(-8px) rotate(-2deg);
+  transition: transform 0.4s ease;
+}
+
+/* -------------------------------
+   SCROLL REVEAL ANIMATIONS
+---------------------------------*/
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: all 0.9s cubic-bezier(0.3, 0.1, 0.1, 1);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-left {
+  transform: translateX(-40px);
+}
+
+.slide-right {
+  transform: translateX(40px);
+}
+
+.revealed.slide-left,
+.revealed.slide-right {
+  transform: translateX(0);
 }
