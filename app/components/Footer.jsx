@@ -1,13 +1,12 @@
 export default function Footer() {
   return (
-    <footer className="bg-black/40 border-t border-white/10 pt-16 pb-10 mt-20">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-gray-300">
-        {/* LEFT — DOWNLOAD SECTION */}
+    <footer className="bg-black/40 border-t border-white/10 pt-14 pb-10 mt-20">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-gray-300">
+        {/* LEFT — DOWNLOAD */}
         <div>
-          <h3 className="text-white font-semibold mb-6">გადმოწერე</h3>
+          <h3 className="text-white font-semibold mb-4 text-lg">გადმოწერე</h3>
 
-          {/* SVG logos in a row */}
-          <div className="flex items-center gap-4 mt-2">
+          <div className="flex items-center gap-4 mt-3">
             <a href="https://apps.apple.com" target="_blank">
               <img
                 src="/appstore.svg"
@@ -28,8 +27,9 @@ export default function Footer() {
 
         {/* CENTER — NAVIGATION */}
         <div>
-          <h3 className="text-white font-semibold mb-4">ნავიგაცია</h3>
-          <ul className="space-y-2 text-gray-400 text-sm">
+          <h3 className="text-white font-semibold mb-4 text-lg">ნავიგაცია</h3>
+
+          <ul className="space-y-2 text-sm text-gray-400">
             <li>
               <a
                 href="#start-guide"
@@ -61,8 +61,9 @@ export default function Footer() {
 
         {/* RIGHT — CONTACT */}
         <div>
-          <h3 className="text-white font-semibold mb-4">კონტაქტი</h3>
-          <ul className="space-y-2 text-gray-400 text-sm">
+          <h3 className="text-white font-semibold mb-4 text-lg">კონტაქტი</h3>
+
+          <ul className="space-y-2 text-sm text-gray-400">
             <li className="hover:text-green-400 transition cursor-pointer">
               info@ai-ia.ge
             </li>
@@ -78,7 +79,7 @@ export default function Footer() {
       </div>
 
       {/* COPYRIGHT */}
-      <div className="mt-10 text-center text-gray-500 text-sm">
+      <div className="mt-12 text-center text-gray-500 text-sm">
         AI IA — შექმნილია Astarta-ს მიერ.
       </div>
     </footer>
