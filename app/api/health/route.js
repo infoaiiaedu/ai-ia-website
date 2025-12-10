@@ -1,4 +1,4 @@
-// Health check endpoint for Docker
+// Health check endpoint
 export async function GET() {
   return Response.json({ 
     status: 'healthy', 

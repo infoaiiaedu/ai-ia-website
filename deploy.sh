@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # EduAI Website Deployment Script
-# For hosting on eduaiia.com without Docker
+# For hosting on eduaiia.com with PM2
 
 echo "🚀 Starting deployment for eduaiia.com..."
 
