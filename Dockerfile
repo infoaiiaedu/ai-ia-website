@@ -7,7 +7,7 @@
 FROM node:20-alpine AS base
 
 # Set memory limits for Node.js
-ENV NODE_OPTIONS="--max-old-space-size=512 --gc-interval=100"
+ENV NODE_OPTIONS="--max-old-space-size=512"
 ENV NODE_ENV=production
 
 # Install essential system dependencies
@@ -30,15 +30,13 @@ FROM base AS deps
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install dependencies with memory optimizations
-RUN npm ci --only=production \
+# Install ALL dependencies (needed for building)
+RUN npm ci \
     --no-audit \
     --no-fund \
     --prefer-offline \
     --progress=false \
-    --loglevel=error \
-    && npm cache clean --force \
-    && rm -rf ~/.npm
+    --loglevel=error
 
 # =====================================
 # Stage 3: Application Builder
@@ -58,9 +56,16 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_OPTIONS="--max-old-space-size=768"
 
 # Build the application with memory optimizations
-RUN npm run build \
-    && rm -rf node_modules \
-    && npm ci --only=production --omit=dev --no-audit --no-fund \
+RUN npm run build
+
+# Install only production dependencies for runtime
+RUN rm -rf node_modules \
+    && npm ci --only=production \
+    --no-audit \
+    --no-fund \
+    --prefer-offline \
+    --progress=false \
+    --loglevel=error \
     && npm cache clean --force
 
 # =====================================
