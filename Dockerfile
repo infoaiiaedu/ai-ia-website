@@ -1,48 +1,21 @@
-# Multi-stage Next.js Frontend Dockerfile
-# Optimized for low-memory servers
+# Professional Next.js Frontend Dockerfile
+# Optimized for eduaiia.com website
 
-# =====================================
-# Stage 1: Base Node.js Image
-# =====================================
-FROM node:20-alpine AS base
-
-# Set memory limits for Node.js
-ENV NODE_OPTIONS="--max-old-space-size=512"
-ENV NODE_ENV=production
-
-# Install essential system dependencies
-RUN apk add --no-cache \
-    libc6-compat \
-    dumb-init \
-    && rm -rf /var/cache/apk/*
-
-# Create non-root user
-RUN addgroup --system --gid 1001 nodejs \
-    && adduser --system --uid 1001 nextjs
-
+# Stage 1: Dependencies
+FROM node:20-alpine AS deps
 WORKDIR /app
 
-# =====================================
-# Stage 2: Dependencies Installer
-# =====================================
-FROM base AS deps
+# Install libc6-compat for Alpine
+RUN apk add --no-cache libc6-compat
 
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install ALL dependencies (needed for building)
-RUN npm ci \
-    --no-audit \
-    --no-fund \
-    --prefer-offline \
-    --progress=false \
-    --loglevel=error
+# Install dependencies
+RUN npm ci --only=production
 
-# =====================================
-# Stage 3: Application Builder
-# =====================================
-FROM base AS builder
-
+# Stage 2: Builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy dependencies from deps stage
@@ -51,34 +24,26 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy source code
 COPY . .
 
-# Set build environment
+# Disable telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_OPTIONS="--max-old-space-size=768"
 
-# Build the application with memory optimizations
+# Build the application
 RUN npm run build
 
-# Install only production dependencies for runtime
-RUN rm -rf node_modules \
-    && npm ci --only=production \
-    --no-audit \
-    --no-fund \
-    --prefer-offline \
-    --progress=false \
-    --loglevel=error \
-    && npm cache clean --force
-
-# =====================================
-# Stage 4: Production Runner
-# =====================================
-FROM base AS runner
-
+# Stage 3: Runner
+FROM node:20-alpine AS runner
 WORKDIR /app
+
+# Install dumb-init
+RUN apk add --no-cache dumb-init
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
 
 # Set production environment
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_OPTIONS="--max-old-space-size=256"
 
 # Copy built application with proper ownership
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
@@ -99,5 +64,5 @@ ENV HOSTNAME="0.0.0.0"
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
 
-# Start the application
+# Start application with dumb-init
 CMD ["dumb-init", "node", "server.js"]
