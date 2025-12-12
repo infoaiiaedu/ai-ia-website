@@ -1,0 +1,16 @@
+services:
+  web:
+    image: aiia-website:latest
+    container_name: aiia-website-web
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
