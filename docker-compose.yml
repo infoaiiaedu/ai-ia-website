@@ -1,8 +1,10 @@
 services:
   web:
-    image: aiia-website:latest
+    image: ghcr.io/infoaiiaedu/ai-ia-website:${IMAGE_TAG:-latest}
     container_name: aiia-website-web
     restart: unless-stopped
+    mem_limit: 256m
+    cpus: '0.50'
     ports:
       - "3002:3000"
     environment:
