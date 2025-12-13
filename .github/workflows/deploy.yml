@@ -1,0 +1,31 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches: [ main, test ]
+
+concurrency:
+  group: frontend-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    environment: ai-ia
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            set -euo pipefail
+            cd /home/ubuntu/ai-ia-website
+            git fetch --all
+            git reset --hard origin/${{ github.ref_name }}
+            docker compose down || true
+            docker compose up -d --build
+            sleep 3
+            curl -fsS http://127.0.0.1:3002/ -o /dev/null
