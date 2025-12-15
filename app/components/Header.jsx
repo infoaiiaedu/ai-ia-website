@@ -10,7 +10,7 @@ const navItems = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(""); // click-ზე აქტიური
+  const [active, setActive] = useState("");
 
   const handleNavClick = (id) => {
     setActive(id);
@@ -18,10 +18,9 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/30">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/30">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        {/* LOGO */}
-        <a href="/" className="flex items-center cursor-pointer">
+        <a href="/" className="flex items-center">
           <img
             src="/log.png"
             alt="AI IA Logo"
@@ -29,7 +28,6 @@ export default function Header() {
           />
         </a>
 
-        {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           {navItems.map((item) => (
             <a
@@ -44,7 +42,6 @@ export default function Header() {
             >
               {item.label}
 
-              {/* underline */}
               <span
                 className={`absolute left-0 -bottom-1 h-[2px] bg-green-400 transition-all duration-300 ${
                   active === item.id ? "w-full" : "w-0"
@@ -54,7 +51,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setOpen((prev) => !prev)}
           className="md:hidden text-white text-3xl focus:outline-none"
@@ -64,7 +60,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* MOBILE DROPDOWN MENU */}
       {open && (
         <div className="md:hidden bg-black/80 backdrop-blur-xl border-t border-white/10 px-6 py-4 text-lg">
           {navItems.map((item) => (
