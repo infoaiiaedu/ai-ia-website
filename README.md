@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-IA Website (Frontend)
 
-## Getting Started
+Info for DevOps Engineer
 
-First, run the development server:
+Overview
+- Next.js 16 (App Router) production build, containerized with Docker.
+- Dockerfile at repo root, Docker Compose in docker-compose.yml.
+- Host Nginx typically proxies the public domain to this service.
 
+Prerequisites
+- Docker and Docker Compose installed
+- Optional: .env files under env/ (use .env.production for prod)
+
+Environment
+- Place environment files under env/ (recommended):
+  - env/.env.production
+  - env/.env.example (template)
+- Ensure NEXT_PUBLIC_API_URL, NEXT_PUBLIC_SITE_URL, etc. are set for your environment.
+
+Build image
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# from repo root
+docker build -t aiia-website:latest .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run with Docker Compose (production)
+```bash
+# from repo root
+# docker-compose.yml maps host 3002 -> container 3000 by default
+# adjust the port if needed for your host
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# bring up
+docker compose up -d
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# view logs
+docker compose logs -f
 
-## Learn More
+# health check (direct)
+curl -i http://127.0.0.1:3002/
+```
 
-To learn more about Next.js, take a look at the following resources:
+Nginx (host) example
+- Upstream to frontend container (adjust port if changed):
+```
+upstream aiia_frontend {
+    server 127.0.0.1:3002;
+    keepalive 32;
+}
+server {
+    listen 80;
+    server_name your-domain.com;
+    location / { proxy_pass http://aiia_frontend; }
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Zero-downtime hint
+- Stand up new port (e.g., 3002), point Nginx to it, validate, then retire old instance.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Troubleshooting
+- If container won’t start due to port conflicts, adjust ports: in docker-compose.yml, set "HOST_PORT:3000" (e.g., "3002:3000").
+- Ensure env variables are present at build time if you rely on them to bake-in values.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Local development
+```bash
+npm run dev
+# open http://localhost:3000
+```
