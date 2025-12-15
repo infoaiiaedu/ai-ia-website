@@ -1,6 +1,13 @@
 "use client";
 import { useState } from "react";
 
+const navItems = [
+  { id: "start-guide", label: "დაწყება" },
+  { id: "how-we-work", label: "როგორ ვმუშაობთ" },
+  { id: "faq", label: "კითხვები" },
+  { id: "blog", label: "ბლოგი" },
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -18,24 +25,22 @@ export default function Header() {
 
         {/* DESKTOP NAV */}
         <nav className="hidden md:flex gap-6 text-gray-300 text-lg font-medium">
-          <a href="#start-guide" className="hover:text-green-400 transition">
-            დაწყება
-          </a>
-          <a href="#how-we-work" className="hover:text-green-400 transition">
-            როგორ ვმუშაობთ
-          </a>
-          <a href="#blog" className="hover:text-green-400 transition">
-            ბლოგი
-          </a>
-          <a href="#faq" className="hover:text-green-400 transition">
-            კითხვები
-          </a>
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className="hover:text-green-400 transition"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         {/* MOBILE MENU BUTTON */}
         <button
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((prev) => !prev)}
           className="md:hidden text-white text-3xl focus:outline-none"
+          aria-label="Toggle menu"
         >
           {open ? "✕" : "☰"}
         </button>
@@ -44,37 +49,16 @@ export default function Header() {
       {/* MOBILE DROPDOWN MENU */}
       {open && (
         <div className="md:hidden bg-black/80 backdrop-blur-xl border-t border-white/10 px-6 py-4 text-lg">
-          <a
-            href="#start-guide"
-            className="block py-2 text-gray-200 hover:text-green-400 transition"
-            onClick={() => setOpen(false)}
-          >
-            დაწყება
-          </a>
-
-          <a
-            href="#how-we-work"
-            className="block py-2 text-gray-200 hover:text-green-400 transition"
-            onClick={() => setOpen(false)}
-          >
-            როგორ ვმუშაობთ
-          </a>
-
-          <a
-            href="#blog"
-            className="block py-2 text-gray-200 hover:text-green-400 transition"
-            onClick={() => setOpen(false)}
-          >
-            ბლოგი
-          </a>
-
-          <a
-            href="#faq"
-            className="block py-2 text-gray-200 hover:text-green-400 transition"
-            onClick={() => setOpen(false)}
-          >
-            კითხვები
-          </a>
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className="block py-2 text-gray-200 hover:text-green-400 transition"
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       )}
     </header>

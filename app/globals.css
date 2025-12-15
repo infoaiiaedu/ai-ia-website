@@ -5,6 +5,12 @@
 /* -------------------------------
    CUSTOM VARIABLES (THEME COLORS)
 ---------------------------------*/
+
+html {
+  scroll-padding-top: 96px;
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg-dark: #02071b;
   --bg-alt: #050f2c;
