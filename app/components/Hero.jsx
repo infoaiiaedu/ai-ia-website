@@ -5,8 +5,7 @@ export default function Hero() {
         {/* LEFT TEXT */}
         <div className="text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            სწავლა მარტივია <span className="text-green-400">აი იასთან</span>{" "}
-            ერთად
+            შენი პირადი <span className="text-green-400">AI მასწავლებელი</span>{" "}
           </h1>
 
           <p className="text-gray-300 mt-4 text-base md:text-lg max-w-xl mx-auto md:mx-0">
@@ -35,8 +34,12 @@ export default function Hero() {
             <div className="absolute top-[11%] left-[9.5%] w-[81%] h-[78%] rounded-[20px] md:rounded-[24px] overflow-hidden shadow-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
               <div className="text-center text-white p-4">
                 <div className="w-16 h-16 mx-auto mb-3 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M8 5v10l8-5-8-5z"/>
+                  <svg
+                    className="w-8 h-8"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M8 5v10l8-5-8-5z" />
                   </svg>
                 </div>
                 <p className="text-sm font-medium">App Preview</p>
