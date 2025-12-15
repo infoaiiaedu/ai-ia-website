@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* -------------------------------
-   CUSTOM VARIABLES (THEME COLORS)
----------------------------------*/
-
 html {
   scroll-padding-top: 96px;
   scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 :root {
@@ -20,9 +21,6 @@ html {
   --text-muted: #9ca3af;
 }
 
-/* -------------------------------
-   GLOBAL BASE STYLES
----------------------------------*/
 body {
   background: var(--bg-dark);
   color: var(--text-main);
@@ -30,11 +28,6 @@ body {
     sans-serif;
 }
 
-/* -------------------------------
-   HERO PHONE ANIMATIONS
----------------------------------*/
-
-/* Floating (up–down soft movement) */
 @keyframes floatPhone {
   0%,
   100% {
@@ -49,7 +42,6 @@ body {
   animation: floatPhone 5s ease-in-out infinite;
 }
 
-/* Glow pulse behind the phone */
 @keyframes glowPulse {
   0%,
   100% {
@@ -73,15 +65,11 @@ body {
   z-index: 0;
 }
 
-/* Tilt on hover */
 .tilt-phone:hover {
   transform: translateY(-8px) rotate(-2deg);
   transition: transform 0.4s ease;
 }
 
-/* -------------------------------
-   SCROLL REVEAL ANIMATIONS
----------------------------------*/
 .reveal {
   opacity: 0;
   transform: translateY(35px);

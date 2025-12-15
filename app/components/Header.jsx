@@ -10,28 +10,46 @@ const navItems = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(""); // click-ზე აქტიური
+
+  const handleNavClick = (id) => {
+    setActive(id);
+    setOpen(false);
+  };
 
   return (
-    <header className="sticky top-0 bg-black/30 backdrop-blur-xl border-b border-white/10 z-50">
+    <header className="sticky top-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/30">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         {/* LOGO */}
         <a href="/" className="flex items-center cursor-pointer">
           <img
             src="/log.png"
             alt="AI IA Logo"
-            className="w-24 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.35)]"
+            className="w-24 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.35)] transition-transform duration-300 hover:scale-[1.03]"
           />
         </a>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex gap-6 text-gray-300 text-lg font-medium">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="hover:text-green-400 transition"
+              onClick={() => handleNavClick(item.id)}
+              className={`relative px-1 py-2 transition-colors duration-200 ${
+                active === item.id
+                  ? "text-white"
+                  : "text-gray-300 hover:text-white"
+              }`}
             >
               {item.label}
+
+              {/* underline */}
+              <span
+                className={`absolute left-0 -bottom-1 h-[2px] bg-green-400 transition-all duration-300 ${
+                  active === item.id ? "w-full" : "w-0"
+                }`}
+              />
             </a>
           ))}
         </nav>
@@ -53,8 +71,12 @@ export default function Header() {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="block py-2 text-gray-200 hover:text-green-400 transition"
-              onClick={() => setOpen(false)}
+              onClick={() => handleNavClick(item.id)}
+              className={`block rounded-lg px-3 py-2 transition ${
+                active === item.id
+                  ? "bg-green-400/10 text-green-400"
+                  : "text-gray-200 hover:bg-white/5 hover:text-white"
+              }`}
             >
               {item.label}
             </a>
