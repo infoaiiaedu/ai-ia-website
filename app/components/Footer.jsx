@@ -16,19 +16,19 @@ export default function Footer() {
           {/* RIGHT */}
           <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-gray-400">
             <a
-              href="mailto:info@ai-ia.ge"
+              href="mailto:infoaiiaedu@gmail.com"
               className="flex items-center gap-2 hover:text-green-400 transition"
             >
               <EnvelopeIcon className="w-4 h-4" />
-              info@ai-ia.ge
+              infoaiiaedu@gmail.com
             </a>
 
             <a
-              href="tel:+995598000000"
+              href="tel:+995598116484"
               className="flex items-center gap-2 hover:text-green-400 transition"
             >
               <PhoneIcon className="w-4 h-4" />
-              +995 598 00 00 00
+              +995 598 11 64 84
             </a>
           </div>
         </div>
