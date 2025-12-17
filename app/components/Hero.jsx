@@ -1,100 +1,64 @@
 export default function Hero() {
   return (
-    <section className="pt-20 md:pt-24 pb-28 md:pb-32 bg-gradient-to-b from-blue-950 to-black text-white">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-16 items-center">
-        {/* LEFT – TEXT */}
-        <div className="text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
-            შენი პირადი
-            <span className="block text-green-400 mt-2">AI მასწავლებელი</span>
-          </h1>
+    <section className="pt-32 pb-36 bg-gradient-to-b from-blue-950 to-black text-white">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        {/* TITLE */}
+        <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
+          შენი პირადი
+          <span className="block mt-4 text-green-400 tracking-[0.3em]">
+            AI მასწავლებელი
+          </span>
+        </h1>
 
-          <p className="mt-6 text-gray-300 text-base md:text-lg max-w-xl mx-auto md:mx-0">
-            სწავლა, რომელიც შენს ტემპს ერგება — მარტივად, გასაგებად და
-            ეფექტურად.
-          </p>
-          {/* CTA BLOCK */}
-          <div className="mt-12 flex items-center justify-center md:justify-start gap-6 relative">
-            {/* App Store */}
+        {/* SUBTITLE */}
+        <p className="mt-8 text-gray-300 text-base md:text-lg max-w-2xl mx-auto">
+          სწავლა, რომელიც შენს ტემპს ერგება — მარტივად, გასაგებად და ეფექტურად.
+        </p>
+
+        {/* CTA */}
+        <div className="mt-16 flex flex-col items-center gap-6">
+          {/* MAIN CTA */}
+          <button
+            className="px-12 py-4 bg-green-500 text-black font-semibold rounded-2xl
+            shadow-[0_0_28px_rgba(34,197,94,0.45)]
+            hover:scale-[1.03] transition"
+          >
+            გადმოწერე
+          </button>
+
+          {/* STORES */}
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href="#"
-              className="flex items-center justify-center gap-3
-             w-[210px] h-[56px]
-             bg-white/10
-             border border-green-400/60
-             rounded-xl backdrop-blur-sm
-             shadow-[0_0_22px_rgba(16,185,129,0.35)]
-             transition"
+              className="flex items-center gap-3 px-6 py-3
+              bg-white/10 border border-white/20 rounded-xl
+              backdrop-blur-sm
+              hover:border-green-400 hover:text-green-400
+              hover:-translate-y-0.5 transition"
             >
               <img
                 src="/appstore.svg"
                 alt="App Store"
                 className="w-6 h-6 brightness-0 invert"
               />
-              <span className="text-sm font-semibold tracking-wide whitespace-nowrap">
-                App Store
-              </span>
+              <span className="text-sm font-medium">App Store</span>
             </a>
 
-            {/* CENTER CTA */}
-            <div className="relative flex items-center">
-              {/* LEFT ARROW */}
-              <span className="absolute -left-6 text-green-400 text-2xl animate-pulse select-none">
-                ←
-              </span>
-
-              <button
-                className="w-[200px] h-[56px]
-               bg-green-500/80 text-black
-               border border-green-400/70
-               rounded-xl font-semibold
-               hover:bg-green-500 hover:border-green-400
-               transition
-               shadow-[0_0_16px_rgba(16,185,129,0.35)]"
-              >
-                დაიწყე სწავლა
-              </button>
-
-              {/* RIGHT ARROW */}
-              <span className="absolute -right-6 text-green-400 text-2xl animate-pulse select-none">
-                →
-              </span>
-            </div>
-
-            {/* Google Play */}
             <a
               href="#"
-              className="flex items-center justify-center gap-3
-             w-[210px] h-[56px]
-             bg-white/10
-             border border-green-400/60
-             rounded-xl backdrop-blur-sm
-             shadow-[0_0_22px_rgba(16,185,129,0.35)]
-             transition"
+              className="flex items-center gap-3 px-6 py-3
+              bg-white/10 border border-white/20 rounded-xl
+              backdrop-blur-sm
+              hover:border-green-400 hover:text-green-400
+              hover:-translate-y-0.5 transition"
             >
               <img
                 src="/playstore.svg"
-                alt="App Store"
+                alt="Google Play"
                 className="w-6 h-6 brightness-0 invert"
               />
-              <span className="text-sm font-semibold tracking-wide whitespace-nowrap">
-                Google Play
-              </span>
+              <span className="text-sm font-medium">Google Play</span>
             </a>
-          </div>
-        </div>
-
-        {/* RIGHT – PHONE MOCKUP */}
-        <div className="flex justify-center mt-12 md:mt-0">
-          <div className="relative w-[220px] sm:w-[260px] md:w-[320px]">
-            {/* Soft glow */}
-            <div className="absolute inset-0 blur-[60px] bg-green-500/20 -z-10"></div>
-
-            <img
-              src="/mockup2.png"
-              alt="AI IA App Preview"
-              className="w-full relative z-10 drop-shadow-2xl pointer-events-none select-none"
-            />
           </div>
         </div>
       </div>

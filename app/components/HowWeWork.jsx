@@ -63,10 +63,11 @@ export default function HowWeWork() {
               src="/robot.png"
               alt="AI learning robot"
               className="
-                w-[260px] sm:w-[320px] md:w-[380px]
-                -mt-24 md:-mt-32
-                drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]
-              "
+    w-[260px] sm:w-[320px] md:w-[380px]
+    -mt-12 sm:-mt-20 md:-mt-32
+    drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]
+    animate-float
+  "
             />
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function DifferenceSection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold">
             განსხვავება{" "}
             <span className="text-green-400">ტრადიციული სწავლებისგან</span>
           </h2>
@@ -21,52 +21,68 @@ export default function DifferenceSection() {
 
         {/* CARDS */}
         <div className="grid md:grid-cols-4 gap-6">
-          {/* CARD 1 */}
-          <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          {/* CARD */}
+          <div
+            className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
+                          shadow-[0_0_18px_rgba(16,185,129,0.15)]
+                          hover:shadow-[0_0_26px_rgba(16,185,129,0.35)]
+                          hover:border-green-400/60 transition"
+          >
             <AcademicCapIcon className="w-8 h-8 text-green-400 mb-4" />
-
             <h3 className="font-semibold text-base mb-2">
-              რთული თემები სახალისო მაგალითებით
+              სახალისო მაგალითები
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              საკითხები იხსნება ყოველდღიური სიტუაციების და ვიზუალური მაგალითების
-              საშუალებით ისე, რომ სწავლა იყოს მარტივი, სახალისო და გასაგები.
+              საკითხები იხსნება ყოველდღიური სიტუაციებისა და ვიზუალური ანალოგების
+              გამოყენებით, რათა სწავლა იყოს მარტივი და გასაგები.
             </p>
           </div>
 
-          {/* CARD 2 — HIGHLIGHTED */}
-          <div className="p-5 rounded-2xl bg-green-400/90 text-black shadow-lg">
-            <VideoCameraIcon className="w-8 h-8 mb-4" />
-
+          {/* CARD */}
+          <div
+            className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
+                          shadow-[0_0_18px_rgba(16,185,129,0.15)]
+                          hover:shadow-[0_0_26px_rgba(16,185,129,0.35)]
+                          hover:border-green-400/60 transition"
+          >
+            <VideoCameraIcon className="w-8 h-8 text-green-400 mb-4" />
             <h3 className="font-semibold text-base mb-2">
               ვიდეო და აუდიო მასალები
             </h3>
-            <p className="text-sm leading-relaxed">
-              AI აგენერირებს ვიდეო და აუდიო მასალებს, რაც სწავლას უფრო
-              საინტერესოს ხდის და ამარტივებს რთული საკითხების გაგებას.
+            <p className="text-gray-300 text-sm leading-relaxed">
+              AI ქმნის ვიდეო და აუდიო მასალებს, რაც სწავლას უფრო საინტერესოს და
+              მარტივად აღსაქმელს ხდის.
             </p>
           </div>
 
-          {/* CARD 3 */}
-          <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          {/* CARD */}
+          <div
+            className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
+                          shadow-[0_0_18px_rgba(16,185,129,0.15)]
+                          hover:shadow-[0_0_26px_rgba(16,185,129,0.35)]
+                          hover:border-green-400/60 transition"
+          >
             <TrophyIcon className="w-8 h-8 text-green-400 mb-4" />
-
             <h3 className="font-semibold text-base mb-2">
-              გეიმიფიკაცია და ლიდერბორდები
+              თამაშის ელემენტები{" "}
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              შეფასების სისტემა ზრდის მოტივაციას ჯილდოებით, პროგრესის ჩვენებით
-              და პოზიტიური უკუკავშირით.
+              სწავლა წახალისებულია ჯილდოებით და ლიდერბორდებით, რაც მოსწავლეს
+              მოტივაციას უზრდის.
             </p>
           </div>
 
-          {/* CARD 4 */}
-          <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          {/* CARD */}
+          <div
+            className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
+                          shadow-[0_0_18px_rgba(16,185,129,0.15)]
+                          hover:shadow-[0_0_26px_rgba(16,185,129,0.35)]
+                          hover:border-green-400/60 transition"
+          >
             <UserGroupIcon className="w-8 h-8 text-green-400 mb-4" />
-
             <h3 className="font-semibold text-base mb-2">მშობლის პროფილი</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              მშობელი იღებს ყოველკვირეულ რეპორტს და მუდმივად აკვირდება შვილის
+              მშობელი იღებს პერიოდულ რეპორტებს და მუდმივად აკვირდება შვილის
               პროგრესს ერთ სივრცეში.
             </p>
           </div>
