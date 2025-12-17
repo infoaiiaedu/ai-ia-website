@@ -1,62 +1,56 @@
 export default function StartGuide() {
   return (
-    <section id="start-guide" className="py-20 md:py-28 bg-black/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
-        {/* LEFT SIDE – TEXT */}
-        <div>
-          <h4 className="text-green-400 uppercase font-semibold mb-3 text-sm md:text-base">
+    <section
+      id="start-guide" // ✅ ეს აკლდა
+      className="py-20 md:py-28 bg-black/20 scroll-mt-24"
+    >
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+        {/* LEFT — TITLE */}
+        <div className="md:pt-6">
+          {/* Small label */}
+          <h4 className="text-green-400 uppercase font-semibold mb-3 text-sm">
             როგორ დავიწყოთ
           </h4>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            დაწყების მარტივი პროცესი{" "}
-            <span className="text-green-400">4 სწრაფი ნაბიჯით</span>
+          {/* Main title */}
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+            აღმოაჩინეთ სწავლის ახალი მეთოდი{" "}
+            <span className="text-green-400">4 ნაბიჯით</span>
           </h2>
 
-          <p className="text-gray-300 mb-6 text-sm md:text-base max-w-md">
+          <p className="text-gray-300 mt-4 max-w-md text-sm md:text-base">
             თქვენი შვილის საგანმანათლებლო მოგზაურობა სულ რამდენიმე წუთში იწყება.
           </p>
-
-          <a className="px-6 py-3 bg-green-500 text-black font-semibold rounded-lg inline-block hover:bg-green-400 transition cursor-pointer text-sm md:text-base">
-            დაიწყეთ რეგისტრაცია
-          </a>
         </div>
 
-        {/* RIGHT SIDE – STEPS */}
-        <div className="flex flex-col gap-5">
+        {/* RIGHT — TIMELINE */}
+        <div className="relative border-l border-white/10 pl-8 space-y-8">
           {[
-            [
-              "მშობლის ანგარიშის შექმნა",
-              "გადმოწერეთ აპლიკაცია და შექმნეთ ანგარიში.",
-            ],
-            [
-              "მოსწავლის რეგისტრაცია",
-              "განახორციელეთ მოსწავლის დამატება: სახელი, გვარი, კლასი.",
-            ],
-            ["საგნის შეძენა", "აირჩიეთ სასურველი საგანი და გადაიხადეთ."],
-            [
-              "უნიკალური კოდი",
-              "მოსწავლე შედის კოდით და ხედავს შეძენილ მასალას.",
-            ],
-          ].map(([title, desc], index) => (
-            <div
-              key={index}
-              className="p-5 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition backdrop-blur-sm"
-            >
-              <div className="flex items-start gap-4">
-                {/* NUMBER */}
-                <span className="text-green-400 font-bold text-2xl md:text-3xl">
-                  {index + 1}
-                </span>
+            {
+              title: "მშობლის პროფილის შექმნა",
+              desc: "გადმოწერეთ აპლიკაცია და გაიარეთ ავტორიზაცია.",
+            },
+            {
+              title: "მოსწავლის რეგისტრაცია",
+              desc: "დაარეგისტრირეთ თქვენი შვილი თქვენივე აპლიკაციიდან როგორც მოსწავლე.",
+            },
+            {
+              title: "საგნის შერჩევა",
+              desc: "შეარჩიეთ სასურველი საგანი და გადაიხადეთ.",
+            },
+            {
+              title: "მოსწავლის ავტორიზაცია",
+              desc: "მოსწავლე ავტორიზაციას შეძლებს თქვენი უნიკალური კოდით და შეძენილი საგნები ავტომატურად დახვდება.",
+            },
+          ].map((step, i) => (
+            <div key={i} className="relative">
+              {/* STEP DOT */}
+              <span className="absolute -left-11 w-8 h-8 rounded-full bg-green-500 text-black font-bold flex items-center justify-center">
+                {i + 1}
+              </span>
 
-                {/* TITLE + DESCRIPTION */}
-                <div>
-                  <h3 className="font-semibold text-lg md:text-xl">{title}</h3>
-                  <p className="text-gray-300 text-sm md:text-base mt-1">
-                    {desc}
-                  </p>
-                </div>
-              </div>
+              <h3 className="font-semibold text-lg">{step.title}</h3>
+              <p className="text-gray-300 text-sm mt-1 max-w-md">{step.desc}</p>
             </div>
           ))}
         </div>

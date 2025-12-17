@@ -2,8 +2,9 @@
 import { useState } from "react";
 
 const navItems = [
-  { id: "start-guide", label: "დაწყება" },
+  { id: "start-guide", label: "როგორ დავიწყოთ" },
   { id: "how-we-work", label: "როგორ ვმუშაობთ" },
+  { id: "difference", label: "რატომ AI-IA" },
   { id: "faq", label: "კითხვები" },
   { id: "blog", label: "ბლოგი" },
 ];
@@ -12,38 +13,26 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
-  const handleNavClick = (id) => {
-    setActive(id);
-    setOpen(false);
-  };
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/30">
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        <a href="/" className="flex items-center">
-          <img
-            src="/log.png"
-            alt="AI IA Logo"
-            className="w-24 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.35)] transition-transform duration-300 hover:scale-[1.03]"
-          />
-        </a>
+    <header className="fixed top-0 inset-x-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
+        <img src="/log.png" alt="AI IA" className="w-20" />
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+        <nav className="hidden md:flex gap-6 text-sm">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              onClick={() => handleNavClick(item.id)}
-              className={`relative px-1 py-2 transition-colors duration-200 ${
+              onClick={() => setActive(item.id)}
+              className={`relative transition ${
                 active === item.id
                   ? "text-white"
                   : "text-gray-300 hover:text-white"
               }`}
             >
               {item.label}
-
               <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-green-400 transition-all duration-300 ${
+                className={`absolute left-0 -bottom-1 h-[2px] bg-green-400 transition-all ${
                   active === item.id ? "w-full" : "w-0"
                 }`}
               />
@@ -52,26 +41,21 @@ export default function Header() {
         </nav>
 
         <button
-          onClick={() => setOpen((prev) => !prev)}
-          className="md:hidden text-white text-3xl focus:outline-none"
-          aria-label="Toggle menu"
+          className="md:hidden text-white text-2xl"
+          onClick={() => setOpen(!open)}
         >
           {open ? "✕" : "☰"}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden bg-black/80 backdrop-blur-xl border-t border-white/10 px-6 py-4 text-lg">
+        <div className="md:hidden bg-black/90 px-6 py-3 space-y-2">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              onClick={() => handleNavClick(item.id)}
-              className={`block rounded-lg px-3 py-2 transition ${
-                active === item.id
-                  ? "bg-green-400/10 text-green-400"
-                  : "text-gray-200 hover:bg-white/5 hover:text-white"
-              }`}
+              onClick={() => setOpen(false)}
+              className="block text-gray-200 hover:text-green-400"
             >
               {item.label}
             </a>

@@ -5,6 +5,7 @@ import HowWeWork from "./components/HowWeWork";
 import QASection from "./components/QASection";
 import BlogSection from "./components/BlogSection";
 import Footer from "./components/Footer";
+import DifferenceSection from "./components/DifferenceSection";
 
 export default function HomePage() {
   return (
@@ -13,7 +14,7 @@ export default function HomePage() {
       <Hero />
       <StartGuide />
       <HowWeWork />
-
+      <DifferenceSection />
       <QASection />
       <BlogSection />
 
@@ -21,4 +22,3 @@ export default function HomePage() {
     </>
   );
 }
-// Test change Sat Dec 13 16:34:06 UTC 2025

@@ -1,50 +1,100 @@
 export default function Hero() {
   return (
-    <section className="pt-16 md:pt-20 pb-24 md:pb-32 bg-gradient-to-b from-blue-950 to-black">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        {/* LEFT TEXT */}
+    <section className="pt-20 md:pt-24 pb-28 md:pb-32 bg-gradient-to-b from-blue-950 to-black text-white">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-16 items-center">
+        {/* LEFT – TEXT */}
         <div className="text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            შენი პირადი <span className="text-green-400">AI მასწავლებელი</span>{" "}
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
+            შენი პირადი
+            <span className="block text-green-400 mt-2">AI მასწავლებელი</span>
           </h1>
 
-          <p className="text-gray-300 mt-4 text-base md:text-lg max-w-xl mx-auto md:mx-0">
-            ვიზუალური, მარტივი და სახალისო მასალა მოსწავლეებისთვის.
+          <p className="mt-6 text-gray-300 text-base md:text-lg max-w-xl mx-auto md:mx-0">
+            სწავლა, რომელიც შენს ტემპს ერგება — მარტივად, გასაგებად და
+            ეფექტურად.
           </p>
+          {/* CTA BLOCK */}
+          <div className="mt-12 flex items-center justify-center md:justify-start gap-6 relative">
+            {/* App Store */}
+            <a
+              href="#"
+              className="flex items-center justify-center gap-3
+             w-[210px] h-[56px]
+             bg-white/10
+             border border-green-400/60
+             rounded-xl backdrop-blur-sm
+             shadow-[0_0_22px_rgba(16,185,129,0.35)]
+             transition"
+            >
+              <img
+                src="/appstore.svg"
+                alt="App Store"
+                className="w-6 h-6 brightness-0 invert"
+              />
+              <span className="text-sm font-semibold tracking-wide whitespace-nowrap">
+                App Store
+              </span>
+            </a>
 
-          <button className="mt-8 px-6 md:px-8 py-3 md:py-4 bg-green-500 rounded-xl text-black font-semibold hover:bg-green-400 transition">
-            დაიწყე სწავლა
-          </button>
+            {/* CENTER CTA */}
+            <div className="relative flex items-center">
+              {/* LEFT ARROW */}
+              <span className="absolute -left-6 text-green-400 text-2xl animate-pulse select-none">
+                ←
+              </span>
+
+              <button
+                className="w-[200px] h-[56px]
+               bg-green-500/80 text-black
+               border border-green-400/70
+               rounded-xl font-semibold
+               hover:bg-green-500 hover:border-green-400
+               transition
+               shadow-[0_0_16px_rgba(16,185,129,0.35)]"
+              >
+                დაიწყე სწავლა
+              </button>
+
+              {/* RIGHT ARROW */}
+              <span className="absolute -right-6 text-green-400 text-2xl animate-pulse select-none">
+                →
+              </span>
+            </div>
+
+            {/* Google Play */}
+            <a
+              href="#"
+              className="flex items-center justify-center gap-3
+             w-[210px] h-[56px]
+             bg-white/10
+             border border-green-400/60
+             rounded-xl backdrop-blur-sm
+             shadow-[0_0_22px_rgba(16,185,129,0.35)]
+             transition"
+            >
+              <img
+                src="/playstore.svg"
+                alt="App Store"
+                className="w-6 h-6 brightness-0 invert"
+              />
+              <span className="text-sm font-semibold tracking-wide whitespace-nowrap">
+                Google Play
+              </span>
+            </a>
+          </div>
         </div>
 
-        {/* RIGHT – PHONE MOCKUP + ANIMATION */}
-        <div className="flex justify-center relative mt-10 md:mt-0">
-          <div className="relative w-[200px] sm:w-[240px] md:w-[300px] floating-phone hover:tilt-phone transition-transform">
-            {/* Soft Glow */}
-            <div className="absolute inset-0 blur-[50px] bg-green-500/20 -z-10"></div>
+        {/* RIGHT – PHONE MOCKUP */}
+        <div className="flex justify-center mt-12 md:mt-0">
+          <div className="relative w-[220px] sm:w-[260px] md:w-[320px]">
+            {/* Soft glow */}
+            <div className="absolute inset-0 blur-[60px] bg-green-500/20 -z-10"></div>
 
-            {/* Frame image */}
             <img
-              src="/hero-illustration.png"
-              alt="iPhone frame"
-              className="pointer-events-none select-none w-full relative z-10 drop-shadow-2xl"
+              src="/mockup2.png"
+              alt="AI IA App Preview"
+              className="w-full relative z-10 drop-shadow-2xl pointer-events-none select-none"
             />
-
-            {/* Placeholder for app preview */}
-            <div className="absolute top-[11%] left-[9.5%] w-[81%] h-[78%] rounded-[20px] md:rounded-[24px] overflow-hidden shadow-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-              <div className="text-center text-white p-4">
-                <div className="w-16 h-16 mx-auto mb-3 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-8 h-8"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M8 5v10l8-5-8-5z" />
-                  </svg>
-                </div>
-                <p className="text-sm font-medium">App Preview</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
