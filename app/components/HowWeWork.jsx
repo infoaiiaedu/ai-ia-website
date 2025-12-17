@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  ClipboardDocumentListIcon,
+  ChatBubbleLeftRightIcon,
+  ChartBarIcon,
+  ArrowPathIcon,
+} from "@heroicons/react/24/outline";
+
 export default function HowWeWork() {
   return (
     <section
@@ -18,7 +25,7 @@ export default function HowWeWork() {
           <div>
             {/* MAIN POINT */}
             <div className="flex items-start gap-4 mb-8">
-              <span className="mt-1 text-green-400 text-xl">✔</span>
+              <ClipboardDocumentListIcon className="w-7 h-7 text-green-400 mt-0.5 flex-shrink-0" />
               <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                 რეგისტრაციისას მოსწავლე წერს ტესტს, რის საფუძველზეც AI ქმნის მის
                 სასწავლო პროფილს.
@@ -28,7 +35,7 @@ export default function HowWeWork() {
             {/* LIST */}
             <ul className="space-y-5 text-sm md:text-base">
               <li className="flex items-start gap-4">
-                <span className="mt-1 text-green-400">✔</span>
+                <ChatBubbleLeftRightIcon className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
                 <span className="text-gray-300 leading-relaxed">
                   AI პასუხობს კითხვებს რეალურ დროში და ეხმარება მოსწავლეს რთული
                   ამოცანების დაძლევაში.
@@ -36,7 +43,7 @@ export default function HowWeWork() {
               </li>
 
               <li className="flex items-start gap-4">
-                <span className="mt-1 text-green-400">✔</span>
+                <ChartBarIcon className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
                 <span className="text-gray-300 leading-relaxed">
                   AI აკვირდება პროგრესს და სთავაზობს რეკომენდაციებსა და
                   დავალებებს რთული თემებისთვის.
@@ -44,7 +51,7 @@ export default function HowWeWork() {
               </li>
 
               <li className="flex items-start gap-4">
-                <span className="mt-1 text-green-400">✔</span>
+                <ArrowPathIcon className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
                 <span className="text-gray-300 leading-relaxed">
                   AI მოსწავლის მონაცემებზე დაყრდნობით უზრუნველყოფს მასალის
                   გამეორებას და გამოცდებისთვის მზადებას.
@@ -63,11 +70,11 @@ export default function HowWeWork() {
               src="/robot.png"
               alt="AI learning robot"
               className="
-    w-[260px] sm:w-[320px] md:w-[380px]
-    -mt-12 sm:-mt-20 md:-mt-32
-    drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]
-    animate-float
-  "
+                w-[260px] sm:w-[320px] md:w-[380px]
+                -mt-12 sm:-mt-20 md:-mt-32
+                drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]
+                animate-float
+              "
             />
           </div>
         </div>

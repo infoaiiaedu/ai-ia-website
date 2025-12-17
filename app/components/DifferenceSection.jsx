@@ -11,7 +11,6 @@ export default function DifferenceSection() {
   return (
     <section id="difference" className="py-20 md:py-28 bg-black/30">
       <div className="max-w-7xl mx-auto px-6">
-        {/* HEADER */}
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold">
             განსხვავება{" "}
@@ -19,9 +18,7 @@ export default function DifferenceSection() {
           </h2>
         </div>
 
-        {/* CARDS */}
         <div className="grid md:grid-cols-4 gap-6">
-          {/* CARD */}
           <div
             className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
                           shadow-[0_0_18px_rgba(16,185,129,0.15)]
@@ -55,7 +52,6 @@ export default function DifferenceSection() {
             </p>
           </div>
 
-          {/* CARD */}
           <div
             className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
                           shadow-[0_0_18px_rgba(16,185,129,0.15)]
@@ -72,7 +68,6 @@ export default function DifferenceSection() {
             </p>
           </div>
 
-          {/* CARD */}
           <div
             className="group p-5 rounded-2xl bg-white/5 border border-green-400/30
                           shadow-[0_0_18px_rgba(16,185,129,0.15)]
